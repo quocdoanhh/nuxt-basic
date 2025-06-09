@@ -10,6 +10,14 @@ definePageMeta({
 const counter = useCounter();
 const store = useCounterStore();
 console.log(store);
+
+const { data: products } = useFetch("/api/products", {
+  transform: (_products) => _products.data,
+});
+const { data: products2 } = useLazyFetch("/api/products", {
+  transform: (_products) => _products.data,
+});
+console.log(toRaw(products.value));
 </script>
 
 <template>
